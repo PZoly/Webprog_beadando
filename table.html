@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recept Táblázat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+            <li><a href="home.html">Főoldal</a></li>
+            <li><a href="recipes.html">Receptgyűjtemény</a></li>
+            <li><a href="table.html">Táblázat</a></li>
+            <li><a href="form.html">Recept Beküldés</a></li>
+            <li><a href="about.html">Rólunk</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <table id="receptTabla">
+        <thead>
+            <tr>
+                <th>Étel neve</th>
+                <th>Elkészítési idő</th>
+                <th>Költség</th>
+                <th>Nehézség</th>
+                <th>Szénhidrát</th>
+                <th>Kalória</th>
+                <th>Feltöltő neve</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <footer>
+        <p>&copy; 2025 Receptgyűjtemény. Minden jog fenntartva.</p>
+    </footer>
+
+    <script>
+        const receptek = [
+            { nev: "Tyúkhúsleves", ido: "195 perc", koltseg: "Megfizethető", nehezseg: "könnyű", szenhidrat: "49.4 g", kaloria: "584 kcal", feltolto: "Papp Zoltán", link: "recipes.html#husleves" },
+            { nev: "Csirke paprikás", ido: "90 perc", koltseg: "Megfizethető", nehezseg: "Közepes", szenhidrat: "14.3 g", kaloria: "779 kcal", feltolto: "Kovács Anna", link: "recipes.html#csirkepaprikas" },
+            { nev: "Túrógombóc", ido: "30 perc", koltseg: "Megfizethető", nehezseg: "Közepes", szenhidrat: "94.6 g", kaloria: "800 kcal", feltolto: "Nagy Péter", link: "recipes.html#turogomboc" },
+            
+        ];
+        const tablaBody = document.querySelector("#receptTabla tbody");
+        receptek.forEach(recept => {
+            const sor = document.createElement("tr");
+
+            const nevCella = document.createElement("td");
+            const link = document.createElement("a");
+            link.href = recept.link;
+            link.className = "recept-link";
+            link.textContent = recept.nev;
+            nevCella.appendChild(link);
+            sor.appendChild(nevCella);
+
+            ["ido", "koltseg", "nehezseg", "szenhidrat", "kaloria", "feltolto"].forEach(kulcs => {
+                const cella = document.createElement("td");
+                cella.textContent = recept[kulcs];
+                sor.appendChild(cella);
+            });
+
+            tablaBody.appendChild(sor);
+        });
+    </script>
+</body>
+</html>

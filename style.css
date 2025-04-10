@@ -72,3 +72,43 @@ body {
     height: auto;
     border-radius: 10px;
   }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+th {
+    background-color: #f2f2f2;
+}
+.recept {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+.recept h2 {
+  margin-top: 0;
+  color: #333;
+}
+.recept img {
+  max-width: 500px;
+  height: auto;
+  border-radius: 8px;
+}
+.hozzavalok, .elkeszites {
+  margin-top: 10px;
+}
+.recept-link {
+    color: #007BFF;
+    text-decoration: none; 
+    font-weight: bold;
+    cursor: pointer; 
+}
+.recept-link:hover {
+    color: #0056b3;
+}
