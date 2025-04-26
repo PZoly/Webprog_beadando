@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>Recept beküldése</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+            <li><a href="home.html">Főoldal</a></li>
+            <li><a href="recipes.html">Receptgyűjtemény</a></li>
+            <li><a href="table.html">Táblázat</a></li>
+            <li><a href="form.html" class="active">Recept Beküldés</a></li>
+            <li><a href="about.html">Rólunk</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h1>Recept beküldése</h1>
+    <form id="recipeForm" novalidate>
+        <label for="name">Név:</label>
+        <input type="text" id="name" name="name">
+        <div class="error" id="nameError"></div>
+
+        <label for="email">Email cím:</label>
+        <input type="email" id="email" name="email">
+        <div class="error" id="emailError"></div>
+
+        <label for="recipeName">Recept neve:</label>
+        <input type="text" id="recipeName" name="recipeName">
+        <div class="error" id="recipeNameError"></div>
+
+        <label for="ingredients">Hozzávalók:</label>
+        <textarea id="ingredients" name="ingredients" rows="4"></textarea>
+        <div class="error" id="ingredientsError"></div>
+
+        <label for="instructions">Elkészítés leírása:</label>
+        <textarea id="instructions" name="instructions" rows="5"></textarea>
+        <div class="error" id="instructionsError"></div>
+
+        <button type="submit">Beküldés</button>
+    </form>
+
+    <script>
+        document.getElementById('recipeForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const name = document.getElementById('name');
+        const email = document.getElementById('email');
+        const recipeName = document.getElementById('recipeName');
+        const ingredients = document.getElementById('ingredients');
+        const instructions = document.getElementById('instructions');
+
+        document.querySelectorAll('.error').forEach(el => el.textContent = '');
+
+        let isValid = true;
+
+        function checkField(field, errorId, fieldName) {
+            if (field.value.trim().length < 10) {
+            document.getElementById(errorId).textContent = `${fieldName} legalább 10 karakter hosszú legyen.`;
+            isValid = false;
+            }
+        }
+
+        checkField(name, 'nameError', 'A név');
+        checkField(recipeName, 'recipeNameError', 'A recept neve');
+        checkField(ingredients, 'ingredientsError', 'A hozzávalók');
+        checkField(instructions, 'instructionsError', 'Az elkészítés leírása');
+
+        // Email ellenőrzése
+        const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+        if (!emailPattern.test(email.value.trim())) {
+            document.getElementById('emailError').textContent = 'Kérlek, adj meg egy érvényes email címet.';
+            isValid = false;
+        }
+
+        if (isValid) {
+            alert('Köszönjük a recept beküldését!');
+        }
+        });
+    </script>
+    <footer>
+        <p>&copy; 2025 Receptgyűjtemény. Minden jog fenntartva.</p>
+    </footer>
+
+</body>
+</html>

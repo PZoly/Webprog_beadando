@@ -6,23 +6,48 @@ body {
   }
   
   nav ul {
-    display: flex;
-    justify-content: space-around;
-    background-color: #f8b400;
-    padding: 10px;
     list-style: none;
+    display: flex;
+    background-color: #f8b400;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
   }
-  
-  nav ul li a {
-    text-decoration: none;
+
+  nav a {
     color: white;
-    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 600;
+    position: relative;
+    padding: 6px 10px;
   }
-  
-  nav ul li a:hover {
-    text-decoration: underline;
+
+  nav a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: #ffe066;
+    transition: width 0.3s ease-in-out;
   }
-  
+
+  nav a:hover::after {
+    width: 100%;
+  }
+
+  nav a:hover {
+    color: #ffe066;
+  }
+
+  nav a.active {
+    color: #ffe066;
+    border-bottom: 3px solid #ffe066;
+  }
+
   header, footer {
     background: #f8b400;
     color: white;
@@ -111,4 +136,27 @@ th {
 }
 .recept-link:hover {
     color: #0056b3;
+}
+
+form {
+  max-width: 500px;
+  margin: auto;
+  margin-bottom: 20px;
+  background-color: #f8f8f8;
+  padding: 20px;
+  border-radius: 8px;
+}
+label {
+  display: block;
+  margin-top: 15px;
+}
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+.error {
+  color: red;
+  font-size: 0.9em;
 }
